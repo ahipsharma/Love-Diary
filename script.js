@@ -479,14 +479,15 @@ musicToggle.onclick = () => {
 };
 
 // Render Diaries
+let idx = 1
 diaries.forEach(diary => {
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
   <img src="${getImage(diary.id)}" />
-  <div class="card-title">${diary.title}</div>
+  <div class="card-title">Ep ${idx} - ${diary.title}</div>
 `;
-
+    idx++
     div.onclick = () => openDiary(diary, div);
 
     diaryList.appendChild(div);
@@ -494,25 +495,33 @@ diaries.forEach(diary => {
 
 function getImage(id) {
     const images = {
-        1: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+        1: "images/Green Manvi.png",
 
-        2: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80",
+        2: "images/black dress.png",
 
-        3: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=800&q=80",
+        3: "images/foreheadKiss.png",
 
-        4: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
+        4: "images/backhug.png",
 
-        5: "https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800&q=80",
+        5: "images/Ai Manvi.png",
 
-        6: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+        6: "images/ForeheadTouch.png",
 
-        7: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&q=80",
+        7: "images/manvi blushing.png",
 
-        8: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&q=80",
+        8: "images/Cheeks kiss.png",
 
-        9: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+        9: "images/beautifulManvi.png",
 
-        10: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80"
+        10: "images/LipKiss.png",
+
+        11: "images/SittingTogether.png",
+
+        13: "images/FingerBiting.png",
+
+        'a': "images/LoveYou.png",
+
+        14: "images/LipKiss2.png"
     };
 
     return images[id] || "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee";
@@ -548,8 +557,6 @@ function createDiaryView(diary) {
                 ${diary.content.replace(/\n/g, "<br>")}
             </div>
 
-            <textarea placeholder="Write something for me... 💭"></textarea>
-            <button class="reply-btn">Reply 💌</button>
             <button class="close-btn">← Close</button>
         `;
     }
