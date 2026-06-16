@@ -452,6 +452,12 @@ Tumhara mera sab kuch record karna
 Tumhara mere liye wait karna
 Babyyy
 Muje sab kuch pasand hai`
+    },
+    {
+        id: 15,
+        title: "One Where Ross explains about L.O.V.E.",
+        type: "video",
+        video: "Videos/Ross_Speech.mp4"
     }
 ];
 
@@ -468,15 +474,15 @@ let currentDiaryId = null;
 
 const musicToggle = document.getElementById("musicToggle");
 
-musicToggle.onclick = () => {
-    if (music.paused) {
-        music.play();
-        musicToggle.innerText = "🔇 Stop";
-    } else {
-        music.pause();
-        musicToggle.innerText = "🔊 Music";
-    }
-};
+// musicToggle.onclick = () => {
+//     if (music.paused) {
+//         music.play();
+//         musicToggle.innerText = "🔇 Stop";
+//     } else {
+//         music.pause();
+//         musicToggle.innerText = "🔊 Music";
+//     }
+// };
 
 // Render Diaries
 let idx = 1
@@ -521,7 +527,9 @@ function getImage(id) {
 
         'a': "images/LoveYou.png",
 
-        14: "images/LipKiss2.png"
+        14: "images/LipKiss2.png",
+
+        15: "images/Friends.jpg"
     };
 
     return images[id] || "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee";
@@ -534,8 +542,62 @@ function startMusic() {
     musicToggle.innerText = "🔇 Stop"
 }
 
+function createSparkle(x, y) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+
+    sparkle.style.left = x + "px";
+    sparkle.style.top = y + "px";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 800);
+}
+
+// Touch (mobile tap)
+document.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    createSparkle(touch.clientX, touch.clientY);
+});
+
+// Mouse move
+document.addEventListener("mousemove", (e) => {
+    if (Math.random() < 0.1) { // reduce spam
+        createSparkle(e.clientX, e.clientY);
+    }
+});
+
+// Scroll effect
+let lastX = window.innerWidth / 2;
+let lastY = window.innerHeight / 2;
+
+// track mouse
+document.addEventListener("mousemove", (e) => {
+    lastX = e.clientX;
+    lastY = e.clientY;
+});
+
+// track touch
+document.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    lastX = touch.clientX;
+    lastY = touch.clientY;
+});
+
+// ✅ FIXED scroll
+window.addEventListener("scroll", () => {
+    if (Math.random() < 0.3) {
+        createSparkle(
+            lastX + (Math.random() * 20 - 10),
+            lastY + (Math.random() * 20 - 10)
+        );
+    }
+});
+
 // play on first interaction
-document.addEventListener("click", startMusic);
+// document.addEventListener("click", startMusic);
 
 // Open Diary
 const diaryView = document.getElementById("diaryView");
@@ -548,6 +610,14 @@ function createDiaryView(diary) {
         div.innerHTML = `
             <h2>${diary.title}</h2>
             <img src="${diary.image}" class="diary-full-image" />
+            <button class="close-btn">← Close</button>
+        `;
+    } else if (diary.type === "video") {
+        div.innerHTML = `
+            <h2>${diary.title}</h2>
+            <video width="130" height="240" controls>
+                <source src="${diary.video}" type="video/mp4" class="diary-full-image">
+            </video>
             <button class="close-btn">← Close</button>
         `;
     } else {
