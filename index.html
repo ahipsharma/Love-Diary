@@ -8,12 +8,26 @@
 </head>
 
 <body>
-    <audio id="bgMusic" src="audio/I'll be there for you.mp3" loop></audio>
-    <button id="musicToggle" class="music-btn">🔊 I'll be there for you</button>
-    <h1 class="title">My Episodes of love with Manvi, curated with love and passion 💌</h1>
+    <!-- ENTRY SCREEN -->
+    <div id="entryScreen" class="entry-screen">
+        <div class="door-container">
 
-    <!-- Diary List -->
-    <div id="diaryList" class="diary-list"></div>
+            <img src="images/Friends_Door.jpg" class="door-img" />
+
+            <div class="password-box">
+                <input type="password" id="passwordInput" placeholder="Enter the Password. Hint: It's our special day!" />
+                <button id="enterBtn">Unlock 🚪</button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mainContent">
+        <audio id="bgMusic" src="audio/I'll be there for you.mp3" loop></audio>
+        <button id="musicToggle" class="music-btn">🔊 I'll be there for you</button>
+        <h1 class="title">My Episodes of love with Manvi, curated with love and passion 💌</h1>
+
+        <!-- Diary List -->
+        <div id="diaryList" class="diary-list"></div>
 
     </div>
     </div>
@@ -53,6 +67,7 @@
     <div id="animationContainer"></div>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="script.js"></script>
+    </div>
 </body>
 
 </html>

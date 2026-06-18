@@ -156,6 +156,60 @@ body {
     overflow: hidden;
 }
 
+.entry-screen {
+    position: fixed;
+    inset: 0;
+    background: #a08cdb;
+    /* Friends purple vibe */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.door-container {
+    text-align: center;
+}
+
+.door-img {
+    width: 250px;
+    margin-bottom: 20px;
+    transition: transform 1s ease;
+}
+
+.password-box {
+    margin-top: 10px;
+}
+
+.password-box input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 290px;
+    text-align: center;
+}
+
+.password-box button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* 🚪 OPEN ANIMATION */
+.open-door {
+    transform: rotateY(90deg);
+}
+
+/* Hide main site initially */
+#mainContent {
+    display: none;
+}
+
 .close {
     position: absolute;
     top: 10px;

@@ -461,6 +461,35 @@ Muje sab kuch pasand hai`
     }
 ];
 
+// Door
+const enterBtn = document.getElementById("enterBtn");
+const passwordInput = document.getElementById("passwordInput");
+const entryScreen = document.getElementById("entryScreen");
+const doorImg = document.querySelector(".door-img");
+
+const mainContent = document.getElementById("mainContent");
+
+const correctPassword = "31/08/2024";
+
+enterBtn.onclick = () => {
+    const value = passwordInput.value;
+
+    if (value === correctPassword) {
+
+        // door opens
+        doorImg.classList.add("open-door");
+
+        setTimeout(() => {
+            entryScreen.style.display = "none";
+            mainContent.style.display = "block";
+        }, 1000);
+
+    } else {
+        passwordInput.value = "";
+        passwordInput.placeholder = "Wrong Password! Hint: It's our special date";
+    }
+};
+
 const diaryList = document.getElementById("diaryList");
 const replyInput = document.getElementById("replyInput");
 const badgeList = document.getElementById("badgeList");
