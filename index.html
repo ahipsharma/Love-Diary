@@ -9,24 +9,12 @@
 
 <body>
     <audio id="bgMusic" src="audio/I'll be there for you.mp3" loop></audio>
-    <button id="musicToggle" class="music-btn">🔊 Music</button>
+    <button id="musicToggle" class="music-btn">🔊 I'll be there for you</button>
     <h1 class="title">My Episodes of love with Manvi, curated with love and passion 💌</h1>
 
     <!-- Diary List -->
     <div id="diaryList" class="diary-list"></div>
 
-    <!-- Modal -->
-    <!-- <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="closeBtn" class="close">&times;</span>
-
-      <h2 id="modalTitle"></h2>
-
-      <div id="modalText" class="modal-text"></div>
-
-      <!-- Reply -->
-    <!-- <textarea id="replyInput" placeholder="Write something for me... 💭"></textarea> -->
-    <!-- <button id="replyBtn">Reply 💌</button> -->
     </div>
     </div>
     <div id="diaryView" class="diary-view hidden">
@@ -37,29 +25,33 @@
         <div id="diaryContent" class="diary-content"></div>
 
         <textarea id="replyInput" placeholder="Write something for me... 💭"></textarea>
-        <!-- <button id="replyBtn">Reply 💌</button> -->
     </div>
     <div class="bg-animation">
         <img src="images/Ai Manvi.png" />
-        <!-- <img src="images/manvi.png" /> -->
         <img src="images/Blue dress.png" />
         <img src="images/Cheeks kiss.png" />
-        <!-- <img src="images/black dress.png" /> -->
         <img src="images/Holding her on her back.png" />
         <img src="images/manvi blushing.png" />
     </div>
+    <!-- Email Button -->
+    <button id="openEmail" class="email-btn">💌 Send me something</button>
 
-    <!-- Badges -->
-    <!-- <div class="badges-container">
-        <button id="badgeToggle" class="badge-btn">
-            Your Badges 🎖️
-        </button>
+    <!-- Email Modal -->
+    <div id="emailModal" class="email-modal hidden">
+        <div class="email-box">
+            <span id="closeEmail" class="close">×</span>
 
-        <div id="badgeBox" class="badge-box hidden">
-            <ul id="badgeList"></ul>
+            <h2>Write to me 💖</h2>
+
+            <input id="userEmail" placeholder="Your email 💌" />
+
+            <textarea id="userMessage" placeholder="Write your thoughts... 💭"></textarea>
+
+            <button id="sendEmail">Send 💌</button>
         </div>
-    </div> -->
-
+    </div>
+    <div id="animationContainer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 

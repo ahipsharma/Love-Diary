@@ -462,11 +462,6 @@ Muje sab kuch pasand hai`
 ];
 
 const diaryList = document.getElementById("diaryList");
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modalTitle");
-const modalText = document.getElementById("modalText");
-const closeBtn = document.getElementById("closeBtn");
-const replyBtn = document.getElementById("replyBtn");
 const replyInput = document.getElementById("replyInput");
 const badgeList = document.getElementById("badgeList");
 
@@ -474,15 +469,15 @@ let currentDiaryId = null;
 
 const musicToggle = document.getElementById("musicToggle");
 
-// musicToggle.onclick = () => {
-//     if (music.paused) {
-//         music.play();
-//         musicToggle.innerText = "🔇 Stop";
-//     } else {
-//         music.pause();
-//         musicToggle.innerText = "🔊 Music";
-//     }
-// };
+musicToggle.onclick = () => {
+    if (music.paused) {
+        music.play();
+        musicToggle.innerText = "🔇 I'll be there for you";
+    } else {
+        music.pause();
+        musicToggle.innerText = "🔊 I'll be there for you";
+    }
+};
 
 // Render Diaries
 let idx = 1
@@ -586,7 +581,7 @@ document.addEventListener("touchmove", (e) => {
     lastY = touch.clientY;
 });
 
-// ✅ FIXED scroll
+// FIXED scroll
 window.addEventListener("scroll", () => {
     if (Math.random() < 0.3) {
         createSparkle(
@@ -596,16 +591,13 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// play on first interaction
-// document.addEventListener("click", startMusic);
-
 // Open Diary
 const diaryView = document.getElementById("diaryView");
 function createDiaryView(diary) {
     const div = document.createElement("div");
     div.className = "diary-view";
 
-    // 🔥 HANDLE IMAGE TYPE HERE
+    // HANDLE IMAGE TYPE HERE
     if (diary.type === "image") {
         div.innerHTML = `
             <h2>${diary.title}</h2>
@@ -644,7 +636,7 @@ function openDiary(diary, cardElement) {
 
     const diaryView = createDiaryView(diary);
 
-    // 🔥 insert right AFTER clicked card
+    // insert right AFTER clicked card
     cardElement.after(diaryView);
 
     activeDiaryView = diaryView;
@@ -673,30 +665,7 @@ document.getElementById("closeDiary").onclick = () => {
     });
 };
 
-// Close Modal
-closeBtn.onclick = () => {
-    modal.classList.add("hidden");
-};
 
-// Reply
-replyBtn.onclick = () => {
-    const text = replyInput.value.trim();
-    if (!text) return;
-
-    let replies = JSON.parse(localStorage.getItem("replies")) || {};
-
-    if (!replies[currentDiaryId]) {
-        replies[currentDiaryId] = [];
-    }
-
-    replies[currentDiaryId].push(text);
-    localStorage.setItem("replies", JSON.stringify(replies));
-
-    replyInput.value = "";
-
-    unlockBadge("FIRST_REPLY");
-    alert("Reply saved 💌");
-};
 
 // Badge System
 function unlockBadge(type) {
@@ -705,34 +674,128 @@ function unlockBadge(type) {
     if (!badges.includes(type)) {
         badges.push(type);
         localStorage.setItem("badges", JSON.stringify(badges));
-        renderBadges();
+        // renderBadges();
     }
 }
 const badgeToggle = document.getElementById("badgeToggle");
 const badgeBox = document.getElementById("badgeBox");
 
-badgeToggle.onclick = () => {
-    badgeBox.classList.toggle("hidden");
-};
-
-// Render Badges
-function renderBadges() {
-    let badges = JSON.parse(localStorage.getItem("badges")) || [];
-    badgeList.innerHTML = "";
-
-    badges.forEach(badge => {
-        const li = document.createElement("li");
-
-        if (badge === "FIRST_VISIT") li.innerText = "🌸 First Visit";
-        if (badge === "FIRST_READ") li.innerText = "📖 First Diary Opened";
-        if (badge === "FIRST_REPLY") li.innerText = "💌 First Reply";
-
-        badgeList.appendChild(li);
-    });
+if (badgeToggle && badgeBox) {
+    badgeToggle.onclick = () => {
+        badgeBox.classList.toggle("hidden");
+    };
 }
 
-// First Visit
-window.onload = () => {
-    unlockBadge("FIRST_VISIT");
-    renderBadges();
+// Email
+const openEmail = document.getElementById("openEmail");
+const emailModal = document.getElementById("emailModal");
+const closeEmail = document.getElementById("closeEmail");
+const sendEmail = document.getElementById("sendEmail");
+(function () {
+    emailjs.init("qT03h08gjuErxAir2");
+})();
+
+sendEmail.onclick = () => {
+    const email = document.getElementById("userEmail").value;
+    const message = document.getElementById("userMessage").value;
+
+    if (!email || !message) {
+        alert("Fill everything 💌");
+        return;
+    }
+
+    emailjs.send(
+        "service_0coxk58",
+        "template_025le1e",
+        {
+            from_email: email,
+            message: message
+        }
+    )
+        .then(() => {
+            alert("Message sent 💖");
+            emailModal.classList.add("hidden");
+        })
+        .catch((err) => {
+            console.error(err);
+            alert("Something went wrong 😢");
+        });
+};
+
+openEmail.onclick = () => {
+    emailModal.classList.remove("hidden");
+};
+
+closeEmail.onclick = () => {
+    emailModal.classList.add("hidden");
+};
+function createHearts(x, y) {
+    const container = document.getElementById("animationContainer");
+
+    for (let i = 0; i < 8; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+
+        heart.style.left = x + Math.random() * 30 + "px";
+        heart.style.top = y + "px";
+
+        container.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2000);
+    }
+}
+
+function createFlyingLetter(x, y) {
+    const container = document.getElementById("animationContainer");
+
+    const letter = document.createElement("div");
+    letter.className = "letter";
+    letter.innerText = "✉️";
+
+    letter.style.left = x + "px";
+    letter.style.top = y + "px";
+
+    container.appendChild(letter);
+
+    setTimeout(() => letter.remove(), 1500);
+}
+
+sendEmail.onclick = (e) => {
+    const email = document.getElementById("userEmail").value;
+    const message = document.getElementById("userMessage").value;
+
+    if (!email || !message) {
+        alert("Fill everything 💌");
+        return;
+    }
+
+    // Get button position
+    const rect = e.target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top;
+
+    // Hearts burst
+    createHearts(x, y);
+
+    // Flying letter
+    createFlyingLetter(x, y);
+
+    emailjs.send(
+        "service_0coxk58",
+        "template_025le1e",
+        {
+            from_email: email,
+            message: message
+        }
+    )
+        .then(() => {
+            setTimeout(() => {
+                emailModal.classList.add("hidden");
+            }, 1200);
+        })
+        .catch((err) => {
+            console.error(err);
+            alert("Something went wrong 😢");
+        });
 };
