@@ -463,12 +463,13 @@ Muje sab kuch pasand hai`
 
 // Door
 const enterBtn = document.getElementById("enterBtn");
+const exploreBtn = document.getElementById("exploreBtn");
 const passwordInput = document.getElementById("passwordInput");
 const entryScreen = document.getElementById("entryScreen");
 const doorImg = document.querySelector(".door-img");
 
 const mainContent = document.getElementById("mainContent");
-
+const secondScreen = document.getElementById("secondScreen");
 const correctPassword = "31/08/2024";
 
 enterBtn.onclick = () => {
@@ -481,7 +482,7 @@ enterBtn.onclick = () => {
 
         setTimeout(() => {
             entryScreen.style.display = "none";
-            mainContent.style.display = "block";
+            secondScreen.style.display = "block";
         }, 1000);
 
     } else {
@@ -489,6 +490,12 @@ enterBtn.onclick = () => {
         passwordInput.placeholder = "Wrong Password! Hint: It's our special date";
     }
 };
+exploreBtn.onclick = () => {
+    setTimeout(() => {
+        secondScreen.style.display = "none";
+        mainContent.style.display = "block";
+    }, 1000);
+}
 
 const diaryList = document.getElementById("diaryList");
 const replyInput = document.getElementById("replyInput");

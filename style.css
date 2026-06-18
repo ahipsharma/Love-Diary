@@ -167,6 +167,20 @@ body {
     align-items: center;
     z-index: 9999;
 }
+.secondScreen {
+    position: fixed;
+    inset: 0;
+    background: #a08cdb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondPageImage {
+    border: 2px solid #a08cdb;
+    border-radius: 10px;
+}
 
 .door-container {
     text-align: center;
