@@ -156,6 +156,28 @@ body {
     overflow: hidden;
 }
 
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff4d6d;
+
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close:hover {
+    transform: scale(1.2);
+    color: #ff1e4d;
+}
+
+.email-box {
+    position: relative;
+    /* 🔥 needed for close button positioning */
+}
+
 .bg-animation img {
     position: absolute;
     width: 200px;
