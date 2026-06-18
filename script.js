@@ -1,5 +1,11 @@
 const diaries = [
     {
+        id: 15,
+        title: "One Where Ross explains about L.O.V.E.",
+        type: "video",
+        video: "Videos/Ross_Speech.mp4"
+    },
+    {
         id: 'a',
         title: "One with the starting of a beautiful relationship",
         type: "image",
@@ -452,12 +458,6 @@ Tumhara mera sab kuch record karna
 Tumhara mere liye wait karna
 Babyyy
 Muje sab kuch pasand hai`
-    },
-    {
-        id: 15,
-        title: "One Where Ross explains about L.O.V.E.",
-        type: "video",
-        video: "Videos/Ross_Speech.mp4"
     }
 ];
 
@@ -516,7 +516,6 @@ exploreBtn.onclick = () => {
             secondScreen.style.display = "none";
             mainContent.style.display = "block";
         }, 1000);
-    console.log("inner Text6", exploreBtn.innerText)
 }
 
 const diaryList = document.getElementById("diaryList");
