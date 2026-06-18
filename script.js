@@ -491,10 +491,32 @@ enterBtn.onclick = () => {
     }
 };
 exploreBtn.onclick = () => {
-    setTimeout(() => {
-        secondScreen.style.display = "none";
-        mainContent.style.display = "block";
-    }, 1000);
+    if (exploreBtn.innerText == "Click to explore more!!") {
+        exploreBtn.innerText = "Sure?"
+        return
+    }
+
+    if (exploreBtn.innerText == "Sure?") {
+        exploreBtn.innerText = "Think twice before you click!"
+        return
+    }
+
+    if (exploreBtn.innerText == "Think twice before you click!") {
+        exploreBtn.innerText = "You Sure?";
+        return
+    }
+
+    if (exploreBtn.innerText == "You Sure?") {
+        exploreBtn.innerText = "1000% Sure?";
+        return;
+    }
+
+    if (exploreBtn.innerText == "1000% Sure?")
+        setTimeout(() => {
+            secondScreen.style.display = "none";
+            mainContent.style.display = "block";
+        }, 1000);
+    console.log("inner Text6", exploreBtn.innerText)
 }
 
 const diaryList = document.getElementById("diaryList");
