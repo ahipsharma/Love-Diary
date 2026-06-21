@@ -883,7 +883,6 @@ notificationModal.onclick = (e) => {
 sendNotification.onclick = () => {
 
     let name = document.getElementById("userName").value || "Someone special 💖";
-    name = "ahip"
     const nameObj = {
         'ahip sharma': { 'name': 'manvi gupta', 'number': "918303639124" },
         'manvi gupta': { 'name': 'ahip sharma', 'number': "918875231064" }
