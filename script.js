@@ -856,3 +856,61 @@ sendEmail.onclick = (e) => {
             alert("Something went wrong 😢");
         });
 };
+
+const notificationBtn = document.getElementById("notificationBtn");
+const notificationModal = document.getElementById("notificationModal");
+const closeNotification = document.getElementById("closeNotification");
+const sendNotification = document.getElementById("sendNotification");
+
+// Open modal
+notificationBtn.onclick = () => {
+    notificationModal.classList.remove("hidden");
+};
+
+// Close modal
+closeNotification.onclick = () => {
+    notificationModal.classList.add("hidden");
+};
+
+// Click outside to close
+notificationModal.onclick = (e) => {
+    if (e.target === notificationModal) {
+        notificationModal.classList.add("hidden");
+    }
+};
+
+// Send WhatsApp message
+sendNotification.onclick = () => {
+
+    let name = document.getElementById("userName").value || "Someone special 💖";
+    const nameObj = {
+        'ahip sharma': { 'name': 'manvi gupta', 'number': "918303639124" },
+        'manvi gupta': { 'name': 'ahip sharma', 'number': "918875231064" }
+    }
+    name = Object.keys(nameObj).find(e => e.includes(name.toLowerCase()))
+    name = name = name
+        .split(" ")
+        .map(e => e[0].toUpperCase() + e.substring(1))
+        .join(" ");
+
+    console.log(name);
+    let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
+
+    const messages = [
+        "I miss you 🥺💖",
+        "Come back soon ❤️",
+        "Thinking about you right now!!",
+        "I just tapped this because I miss you 😳"
+    ];
+
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+    const finalMessage = `${name}: ${randomMsg}`;
+
+    const encodedMessage = encodeURIComponent(finalMessage);
+
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(url, "_blank");
+};
