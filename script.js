@@ -897,10 +897,10 @@ sendNotification.onclick = () => {
     let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
 
     const messages = [
-        "I miss you 🥺💖",
-        "Come back soon ❤️",
-        "Thinking about you right now!!",
-        "I just tapped this because I miss you 😳"
+        `I miss you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} 🥺💖`,
+        `Come back soon ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} ❤️`,
+        `Thinking about you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} right now!!`,
+        `I just tapped this because I miss you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]}`
     ];
 
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
