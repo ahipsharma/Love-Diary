@@ -883,20 +883,22 @@ notificationModal.onclick = (e) => {
 sendNotification.onclick = () => {
 
     let name = document.getElementById("userName").value || "Someone special 💖";
+    name = "ahip"
     const nameObj = {
         'ahip sharma': { 'name': 'manvi gupta', 'number': "918303639124" },
         'manvi gupta': { 'name': 'ahip sharma', 'number': "918875231064" }
     }
     name = Object.keys(nameObj).find(e => e.includes(name.toLowerCase()))
+    console.log(name);
     name = name
         .split(" ")
         .map(e => e[0].toUpperCase() + e.substring(1))
         .join(" ");
 
+        let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
         name = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['name'];
     console.log(name);
-    let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
-
+    console.log(phoneNumber)
     const messages = [
         `I miss you ${name} 🥺💖`,
         `Come back soon ${name} ❤️`,
