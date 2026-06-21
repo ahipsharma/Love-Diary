@@ -888,7 +888,7 @@ sendNotification.onclick = () => {
         'manvi gupta': { 'name': 'ahip sharma', 'number': "918875231064" }
     }
     name = Object.keys(nameObj).find(e => e.includes(name.toLowerCase()))
-    name = name = name
+    name = name
         .split(" ")
         .map(e => e[0].toUpperCase() + e.substring(1))
         .join(" ");
@@ -897,10 +897,10 @@ sendNotification.onclick = () => {
     let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
 
     const messages = [
-        `I miss you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} 🥺💖`,
-        `Come back soon ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} ❤️`,
-        `Thinking about you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]} right now!!`,
-        `I just tapped this because I miss you ${nameObj[name.split(" ").map(e => e[0].toUpperCase() + e.substring(1)).join(" ")]}`
+        `I miss you ${name} 🥺💖`,
+        `Come back soon ${name} ❤️`,
+        `Thinking about you ${name} right now!!`,
+        `I just tapped this because I miss you ${name}`
     ];
 
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
