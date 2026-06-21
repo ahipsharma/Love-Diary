@@ -893,9 +893,10 @@ sendNotification.onclick = () => {
         .map(e => e[0].toUpperCase() + e.substring(1))
         .join(" ");
 
+        name = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['name'];
     console.log(name);
     let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
-    name = name.split(' ')[0]
+
     const messages = [
         `I miss you ${name} 🥺💖`,
         `Come back soon ${name} ❤️`,
