@@ -895,7 +895,7 @@ sendNotification.onclick = () => {
 
     console.log(name);
     let phoneNumber = nameObj[name.split(" ").map(e => e[0].toLowerCase() + e.substring(1)).join(" ")]['number'];
-
+    name = name.split(' ')[0]
     const messages = [
         `I miss you ${name} 🥺💖`,
         `Come back soon ${name} ❤️`,
@@ -905,7 +905,7 @@ sendNotification.onclick = () => {
 
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
 
-    const finalMessage = `${name}: ${randomMsg}`;
+    const finalMessage = `${randomMsg}`;
 
     const encodedMessage = encodeURIComponent(finalMessage);
 
